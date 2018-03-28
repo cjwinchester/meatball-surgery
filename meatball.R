@@ -14,11 +14,10 @@ has_meatball <- function(text) {
 
 for (link in links) {
   absolute_url <- paste0('https://www.springfieldspringfield.co.uk/', link)
-  epname = unlist(strsplit(link, 'episode='))[2]
+  epname <- unlist(strsplit(link, 'episode='))[2]
   print(epname)
   html <- read_html(absolute_url)
   htmltext <- html_text(html)
-  write(htmltext, paste0(epname, '.html'))
   if (has_meatball(htmltext)) {
     print(absolute_url)
     write(absolute_url, outfile, append=TRUE)
